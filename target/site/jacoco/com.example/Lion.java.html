@@ -12,8 +12,8 @@ public class Lion {
 
 
     // Конструктор с инъекцией зависимости
-<span class="fc" id="L15">    public Lion(Predator predator, String sex) throws Exception {</span>
-<span class="fc" id="L16">        this.feline = (Feline) predator;</span>
+<span class="fc" id="L15">    public Lion(String sex, Feline feline) throws Exception {</span>
+<span class="fc" id="L16">        this.feline = feline;</span>
 <span class="fc bfc" id="L17" title="All 2 branches covered.">        if (&quot;Самец&quot;.equals(sex)) {</span>
 <span class="fc" id="L18">            hasMane = true;</span>
 <span class="fc bfc" id="L19" title="All 2 branches covered.">        } else if (&quot;Самка&quot;.equals(sex)) {</span>

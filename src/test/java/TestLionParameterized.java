@@ -34,7 +34,7 @@ public class TestLionParameterized {
     @Test
     public void testLionGetFood() throws Exception {
         Feline feline = new Feline();
-        Lion lion = new Lion(feline, sex);
+        Lion lion = new Lion(sex, feline);
         assertEquals(expectedFood, lion.getFood());
     }
 }

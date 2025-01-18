@@ -15,7 +15,7 @@ public class TestLion {
     public void testGetKittens() throws Exception {
         Feline felineMock = mock(Feline.class);
         when(felineMock.getKittens()).thenReturn(3);
-        Lion lion = new Lion(felineMock, "Самец");
+        Lion lion = new Lion("Самец", felineMock);
         assertEquals(3, lion.getKittens());
     }
 
@@ -23,7 +23,7 @@ public class TestLion {
     @Test
     public void testDoesHaveManeMale() throws Exception {
         Feline felineMock = mock(Feline.class);
-        Lion lion = new Lion(felineMock, "Самец");
+        Lion lion = new Lion("Самец", felineMock);
         assertTrue(lion.doesHaveMane());
     }
 
@@ -31,7 +31,7 @@ public class TestLion {
     @Test
     public void testDoesHaveManeFemale() throws Exception {
         Feline felineMock = mock(Feline.class);
-        Lion lion = new Lion(felineMock, "Самка");
+        Lion lion = new Lion("Самка", felineMock);
         assertFalse(lion.doesHaveMane());
     }
 
@@ -39,7 +39,7 @@ public class TestLion {
     @Test(expected = Exception.class)
     public void testLionConstructorInvalidSex() throws Exception {
         Feline felineMock = mock(Feline.class);
-        new Lion(felineMock, "Неизвестный");
+        new Lion("Неизвестный", felineMock);
     }
 
 
@@ -47,9 +47,10 @@ public class TestLion {
     public void testGetFood() throws Exception {
         Feline felineMock = mock(Feline.class);
         when(felineMock.getFood("Хищник")).thenReturn(List.of("Животные", "Птицы"));
-        Lion lion = new Lion(felineMock, "Самец");
+        Lion lion = new Lion("Самец", felineMock);
         List<String> food = lion.getFood();
-        assertTrue(food.contains("Животные"));
+        List<String> expectedFood = List.of("Животные", "Птицы"); // Инициализация expectedFood
+        assertEquals(expectedFood, food); // Проверка полного списка
     }
 }
 

@@ -1,41 +1,38 @@
 import com.example.Feline;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
 import java.util.List;
-
 
 public class TestFeline {
 
+    private Feline feline; // Объект, который будет использоваться в тестах
+
+    @Before
+    public void setUp() {
+        feline = new Feline(); // Инициализация объекта перед каждым тестом
+    }
 
     @Test
     public void testEatMeat() throws Exception {
-        Feline feline = new Feline();
         List<String> food = feline.eatMeat();
-        assertTrue(food.contains("Животные"));
+        List<String> expectedFood = List.of("Животные", "Птицы", "Рыба"); // Инициализация expectedFood
+        assertEquals(expectedFood, food); // Проверка полного списка
     }
-
 
     @Test
     public void testGetKittens() {
-        Feline feline = new Feline();
         assertEquals(1, feline.getKittens());
     }
 
-
     @Test
     public void testGetKittensWithParameter() {
-        Feline feline = new Feline();
         assertEquals(5, feline.getKittens(5));
     }
 
-
     @Test
     public void testGetFamily() {
-        Feline feline = new Feline();
         assertEquals("Кошачьи", feline.getFamily());
     }
 }
-
-
